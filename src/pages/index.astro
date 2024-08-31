@@ -1,5 +1,23 @@
 ---
+import ky from "ky";
 
+type SiteMetadata = {
+	data: {
+		site_metadata_title: string;
+		site_metadata_description: string;
+		site_metadata_keywords: string[];
+	};
+};
+
+const response = await ky<SiteMetadata>(
+	"https://cms.cramlington-community-chess-club.com/items/global_settings",
+).json();
+
+const {
+	site_metadata_title: title,
+	site_metadata_description: description,
+	site_metadata_keywords: keywords,
+} = response.data;
 ---
 
 <html lang="en">
@@ -11,6 +29,8 @@
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<h1>{title}</h1>
+		<p>{description}</p>
+		<p>{keywords.join(" ")}</p>
 	</body>
 </html>
