@@ -1,0 +1,53 @@
+---
+import PostCard from "./PostCard/index.astro";
+
+interface Props {
+	heading: {
+		title: string;
+		subtitle: string;
+	};
+	posts: {
+		href: string;
+		title: string;
+		subtitle: string;
+		imageSrc: string;
+		imageWidth: number;
+		imageHeight: number;
+	}[];
+	button: {
+		label: string;
+	};
+}
+
+const { heading, posts, button } = Astro.props;
+---
+
+<section class="py-24 relative">
+	<div class="w-full max-w-7xl px-6 lg:px-8 mx-auto">
+		<div class="flex items-center justify-center flex-col gap-5 mb-14 text-base-content">
+			<h2 class="font-manrope font-bold text-4xl text-center">{heading.title}</h2>
+
+			<p class="text-base font-normal max-w-3xl mx-auto text-center opacity-80">
+				{heading.subtitle}
+			</p>
+		</div>
+
+		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-14">
+			{
+				posts.map(({ href, title, subtitle, imageSrc, imageWidth, imageHeight }, index) => (
+					<PostCard
+						isPrimary={index === 0}
+						href={href}
+						title={title}
+						subtitle={subtitle}
+						imageSrc={imageSrc}
+						imageWidth={imageWidth}
+						imageHeight={imageHeight}
+					/>
+				))
+			}
+		</div>
+
+		<button class="btn w-full btn-lg">{button.label}</button>
+	</div>
+</section>

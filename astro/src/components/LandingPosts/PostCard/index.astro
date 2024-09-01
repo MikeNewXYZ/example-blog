@@ -1,0 +1,50 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+	isPrimary: boolean;
+	href: string;
+	title: string;
+	subtitle: string;
+	imageSrc: string;
+	imageWidth: number;
+	imageHeight: number;
+}
+
+const { isPrimary, href, title, subtitle, imageSrc, imageWidth, imageHeight } = Astro.props;
+---
+
+<a
+	class:list={[
+		"block relative w-full h-72 overflow-hidden rounded-lg group",
+		{ "col-span-1 sm:col-span-2": isPrimary },
+		{ "col-span-1": !isPrimary },
+	]}
+	href={href}
+>
+	<div
+		class:list={[
+			"w-full h-full flex flex-col justify-end p-2 sm:p-4",
+			{ "opacity-0 group-hover:opacity-100 transition-opacity duration-500": !isPrimary },
+		]}
+	>
+		<h6 class="font-medium text-xl leading-8 text-base-content mb-4">{title}</h6>
+		<p class="text-base font-normal text-base-content/80">{subtitle}</p>
+	</div>
+
+	<div
+		class:list={[
+			"absolute inset-0 -z-10 w-full h-full bg-black opacity-70",
+			{ "opacity-0 group-hover:opacity-70 transition-opacity duration-500": !isPrimary },
+		]}
+	>
+	</div>
+
+	<Image
+		class="absolute inset-0 -z-20 object-cover w-full h-full"
+		src={imageSrc}
+		alt={title}
+		width={imageWidth}
+		height={imageHeight}
+	/>
+</a>
