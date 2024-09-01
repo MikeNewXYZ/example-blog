@@ -1,0 +1,19 @@
+---
+import getBlogPosts from "../../lib/getBlogPosts";
+
+export async function getStaticPaths() {
+	try {
+		const blogPosts = await getBlogPosts();
+
+		if (!blogPosts) throw Error;
+
+		return blogPosts?.map(({ slug }) => ({ params: { slug: slug?.current } }));
+	} catch (error) {
+		return [];
+	}
+}
+
+const { slug } = Astro.params;
+---
+
+<div>{slug}</div>
