@@ -32,8 +32,9 @@ const { isPrimary, href, title, imageSrc, imageWidth, imageHeight } = Astro.prop
 
 	<div
 		class:list={[
-			"absolute inset-0 -z-10 w-full h-full bg-black opacity-70",
+			"absolute inset-0 -z-10 w-full h-full bg-black",
 			{ "opacity-0 group-hover:opacity-70 transition-opacity duration-500": !isPrimary },
+			{ "opacity-70": isPrimary },
 		]}
 	>
 	</div>
