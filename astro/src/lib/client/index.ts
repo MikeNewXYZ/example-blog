@@ -5,7 +5,6 @@ const client = createClient({
 	dataset: "production",
 	useCdn: true,
 	apiVersion: "2024-09-01",
-	token: process.env.SANITY_SECRET_TOKEN,
 });
 
 export default client;
