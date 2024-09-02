@@ -1,5 +1,5 @@
-import client from "../client";
 import groq from "groq";
+import client from "../../../lib/client";
 
 export type BlogPost = {
 	slug: string;
@@ -12,10 +12,10 @@ export type BlogPost = {
 	body: {}[];
 };
 
-async function getBlogPosts(): Promise<BlogPost[] | undefined> {
+async function getFirst7BlogPosts(): Promise<BlogPost[] | undefined> {
 	try {
 		const dataArray = await client.fetch(
-			groq`*[_type == "blogPostCollection"]{
+			groq`*[_type == "blogPostCollection"][0...7]{
 				"headerImage": {
 					"url": headerImage.asset->url,
 					"width": headerImage.asset->metadata.dimensions.width,
@@ -36,4 +36,4 @@ async function getBlogPosts(): Promise<BlogPost[] | undefined> {
 	}
 }
 
-export default getBlogPosts;
+export default getFirst7BlogPosts;

@@ -5,13 +5,12 @@ interface Props {
 	isPrimary: boolean;
 	href: string;
 	title: string;
-	subtitle: string;
 	imageSrc: string;
 	imageWidth: number;
 	imageHeight: number;
 }
 
-const { isPrimary, href, title, subtitle, imageSrc, imageWidth, imageHeight } = Astro.props;
+const { isPrimary, href, title, imageSrc, imageWidth, imageHeight } = Astro.props;
 ---
 
 <a
@@ -28,8 +27,7 @@ const { isPrimary, href, title, subtitle, imageSrc, imageWidth, imageHeight } = 
 			{ "opacity-0 group-hover:opacity-100 transition-opacity duration-500": !isPrimary },
 		]}
 	>
-		<h6 class="font-medium text-xl leading-8 text-base-content mb-4">{title}</h6>
-		<p class="text-base font-normal text-base-content/80">{subtitle}</p>
+		<h6 class="font-medium text-xl leading-8 text-base-content text-pretty">{title}</h6>
 	</div>
 
 	<div
