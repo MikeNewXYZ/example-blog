@@ -16,23 +16,6 @@ const settings = await getSettings();
 		<title>{settings?.siteTitle}</title>
 	</head>
 	<body>
-		<LandingPosts
-			heading={{
-				title: "The Art of Minimalism: Living with Less",
-				subtitle: "How Simplifying Your Life Can Lead to Greater Happiness and Fulfillment",
-			}}
-			posts={[
-				{
-					href: "#",
-					title: "This is a cactus",
-					subtitle: "Everything you need to know about a cactus and more!",
-					imageSrc:
-						"https://images.pexels.com/photos/21245316/pexels-photo-21245316/free-photo-of-potted-cactus-plant.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-					imageWidth: 1260,
-					imageHeight: 750,
-				},
-			]}
-			button={{ label: "Load More" }}
-		/>
+		<LandingPosts />
 	</body>
 </html>

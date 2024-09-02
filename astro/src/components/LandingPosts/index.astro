@@ -2,36 +2,18 @@
 import getFirst7BlogPosts from "./getFirst7BlogPosts";
 import PostCard from "./PostCard/index.astro";
 
-interface Props {
-	heading: {
-		title: string;
-		subtitle: string;
-	};
-	posts: {
-		href: string;
-		title: string;
-		subtitle: string;
-		imageSrc: string;
-		imageWidth: number;
-		imageHeight: number;
-	}[];
-	button: {
-		label: string;
-	};
-}
-
-const { heading, button } = Astro.props;
-
 const posts = await getFirst7BlogPosts();
 ---
 
 <section class="py-24 relative">
 	<div class="w-full max-w-7xl px-6 lg:px-8 mx-auto">
 		<div class="flex items-center justify-center flex-col gap-5 mb-14 text-base-content">
-			<h2 class="font-manrope font-bold text-4xl text-center">{heading.title}</h2>
+			<h2 class="font-manrope font-bold text-4xl text-center">
+				The Art of Minimalism: Living with Less
+			</h2>
 
 			<p class="text-base font-normal max-w-3xl mx-auto text-center opacity-80">
-				{heading.subtitle}
+				How Simplifying Your Life Can Lead to Greater Happiness and Fulfillment
 			</p>
 		</div>
 
@@ -50,6 +32,6 @@ const posts = await getFirst7BlogPosts();
 			}
 		</div>
 
-		<button class="btn w-full btn-lg">{button.label}</button>
+		<button class="btn w-full btn-lg">Load More</button>
 	</div>
 </section>
